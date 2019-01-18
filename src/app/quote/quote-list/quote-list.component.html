@@ -1,0 +1,73 @@
+<div>
+    <h2>
+        <span translate>Quotes</span>
+        <button class="btn btn-primary float-right" (click)="showAdd()">
+            <span class="fa fa-plus"></span>
+            <span translate>
+                Create
+            </span>
+        </button>
+    </h2>
+
+    Card View
+    <input (change)="fldChange($event)" [value]="cards" type="checkbox" checked/>
+
+    <input type="text" (keydown)="search($event)" placeholder="search..." class="input">
+    <quote-view [entity]="e" *ngFor="let e of records"
+    (editClicked)="showEdit($event)" (deleteClicked)="delete($event)">
+    </quote-view>
+    Page {{currPage}} 
+    <button (click)="prevPage()" >Prev</button>
+    <button (click)="nextPage()" >Next</button>
+
+
+    <div *ngIf=" entities && cards">
+        <!-- <quote-view [entity]="e" *ngFor="let e of $entities | async" (editClicked)="showEdit($event)" (deleteClicked)="delete($event)">
+        </quote-view> -->
+    </div>
+
+    <div *ngIf="entities && !cards">
+
+        <table class="table table-striped  dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>
+                        <span translate>Tags</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th>
+                        <span translate>Text</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th>
+                        <span translate>Explanation</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th>
+                        <span translate>Page</span>
+                        <span class="fa fa-sort"></span>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of comments">
+                    <td> {{e.tags}}</td>
+                    <td> {{e.text}}</td>
+                    <td> {{e.explanation}}</td>
+                    <td> {{e.page}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-default" (click)="showEdit(e)">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                        <button class="btn btn-danger" (click)="delete(e)">
+                            <span class="fa fa-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3> Hi </h3>
+       
+    </div>
+</div>

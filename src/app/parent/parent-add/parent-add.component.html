@@ -1,0 +1,159 @@
+<div class="container-fluid bg-light py-3">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="mb-0">{{ !entity.id ? "Add" : "Edit" }}Parent</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="parentForm" (submit)="submit()" novalidate>
+        <div class="form-group">
+          <label for="firstName-input"> * <span translate>Firstname</span></label>
+          <input
+            type="text"
+            formControlName="firstName"
+            id="firstName-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+            [(ngModel)]="entity.firstName"
+          />
+          <div class="invalid-feedback" *ngIf="submitted && f.firstName.errors">
+            <p *ngIf="f.firstName.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName-input"> * <span translate>Lastname</span></label>
+          <input
+            type="text"
+            formControlName="lastName"
+            id="lastName-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+            [(ngModel)]="entity.lastName"
+          />
+          <div class="invalid-feedback" *ngIf="submitted && f.lastName.errors">
+            <p *ngIf="f.lastName.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="gender-input"> * <span translate>Gender</span></label>
+          <ng-select
+            formControlName="gender"
+            id="gender-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.gender.errors }"
+            [(ngModel)]="entity.gender"
+          >
+            <ng-option value="Male">MALE</ng-option>
+            <ng-option value="Female">FEMALE</ng-option>
+          </ng-select>
+
+          <div class="invalid-feedback" *ngIf="submitted && f.gender.errors">
+            <p *ngIf="f.gender.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dob-input"> * <span translate>Dob</span></label>
+          <div class="input-group">
+            <input
+              placeholder="yyyy-mm-dd"
+              formControlName="dob"
+              id="dob-input"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.dob.errors }"
+              [(ngModel)]="entity.dob"
+              ngbDatepicker
+              #d_dob="ngbDatepicker"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d_dob.toggle()" type="button">
+                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+              </button>
+            </div>
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && f.dob.errors">
+            <p *ngIf="f.dob.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="image-input"> <span translate>Image</span></label>
+          <input
+            type="text"
+            formControlName="image"
+            id="image-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.image.errors }"
+            [(ngModel)]="entity.image"
+          />
+          <div class="invalid-feedback" *ngIf="submitted && f.image.errors">
+            <p *ngIf="f.image.errors.required">Required !</p>
+          </div>
+        </div> -->
+
+        <div class="form-group">
+          <label for="email-input"> * <span translate>Email</span></label>
+          <input
+            type="text"
+            formControlName="email"
+            id="email-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            [(ngModel)]="entity.email"
+          />
+          <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
+            <p *ngIf="f.email.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="city-input"> * <span translate>City</span></label>
+          <input
+            type="text"
+            formControlName="city"
+            id="city-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+            [(ngModel)]="entity.city"
+          />
+          <div class="invalid-feedback" *ngIf="submitted && f.city.errors">
+            <p *ngIf="f.city.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="country-input"> * <span translate>Country</span></label>
+          <input
+            type="text"
+            formControlName="country"
+            id="country-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.country.errors }"
+            [(ngModel)]="entity.country"
+          />
+          <div class="invalid-feedback" *ngIf="submitted && f.country.errors">
+            <p *ngIf="f.country.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bankInfo-input"> * <span translate>Bankinfo</span></label>
+          <input
+            type="text"
+            formControlName="bankInfo"
+            id="bankInfo-input"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.bankInfo.errors }"
+            [(ngModel)]="entity.bankInfo"
+          />
+          <div class="invalid-feedback" *ngIf="submitted && f.bankInfo.errors">
+            <p *ngIf="f.bankInfo.errors.required">Required !</p>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary"><span translate>Submit</span></button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0"> {{ !entity.id ? 'Add':'Edit' }}Quote </h4>
+    </div>
+    <div class="card-body">
+
+        <form [formGroup]="quoteForm" (submit)="submit()" novalidate>
+
+            <div class="form-group">
+                <label for="tags-input"> *
+                    <span translate>Tags</span>
+                </label>
+                <input type="text" formControlName="tags" id="tags-input" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tags.errors }"
+                    [(ngModel)]="entity.tags">
+                <div class="invalid-feedback" *ngIf="submitted && f.tags.errors ">
+                    <p *ngIf="f.tags.errors.required">Required !</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="text-input"> *
+                    <span translate>Text</span>
+                </label>
+                <textarea formControlName="text" id="text-input" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }"
+                    [(ngModel)]="entity.text" rows="8"></textarea>
+                <div class="invalid-feedback" *ngIf="submitted && f.text.errors ">
+                    <p *ngIf="f.text.errors.required">Required !</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="explanation-input"> *
+                    <span translate>Explanation</span>
+                </label>
+                <textarea formControlName="explanation" id="explanation-input" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.explanation.errors }"
+                    [(ngModel)]="entity.explanation" rows="8"></textarea>
+                <div class="invalid-feedback" *ngIf="submitted && f.explanation.errors ">
+                    <p *ngIf="f.explanation.errors.required">Required !</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="page-input">
+                    <span translate>Page</span>
+                </label>
+                <input type="number" formControlName="page" id="page-input" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.page.errors }"
+                    [(ngModel)]="entity.page">
+                <div class="invalid-feedback" *ngIf="submitted && f.page.errors ">
+                    <p *ngIf="f.page.errors.max" translate>must_be_max 1430</p>
+                    <p *ngIf="f.page.errors.required">Required !</p>
+                </div>
+
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">
+                <span translate>Submit</span>
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0"> {{entity.id }} {{entity.page }} {{ entity.tags | slice:0:20 }} </h4>
+    </div>
+    <div class="card-body">
+        {{ entity.text }} {{ entity.explanation }}
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-default" (click)="edit()">
+            <span class="fa fa-edit"></span>
+        </button>
+        <button class="btn btn-default" (click)="delete()">
+            <span class="fa fa-trash"></span>
+        </button>
+    </div>
+</div>
